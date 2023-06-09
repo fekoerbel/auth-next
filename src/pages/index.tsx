@@ -1,5 +1,8 @@
 import { AuthContext } from '@/contexts/AuthContext'
+import { GetServerSideProps } from 'next'
 import { FormEvent, useContext, useState } from 'react'
+import {parseCookies} from 'nookies'
+import { withSSRGuest } from '../../utils/withSSRGuest'
 
 
 export default function Home() {
@@ -26,3 +29,9 @@ export default function Home() {
 
   )
 }
+
+export const getServerSideProps: GetServerSideProps = withSSRGuest(async (ctx) => {
+  return {
+    props: {}
+  }
+});
